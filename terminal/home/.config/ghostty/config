@@ -1,0 +1,45 @@
+# Ghostty configuration
+# Docs:   https://ghostty.org/docs/config
+# Ref:    ghostty +show-config --default --docs
+# Reload: Cmd+Shift+, (macOS) while running
+# This stowed file is the only config: Ghostty also reads
+# ~/Library/Application Support/com.mitchellh.ghostty/config on macOS, so keep
+# that one empty or deleted. Comments go on their own line; after a value they
+# become part of it.
+
+# Theme - Catppuccin Mocha (matches the rest of this setup)
+theme = Catppuccin Mocha
+
+# Fonts - Berkeley Mono for text, Nerd Font for symbols/icons (yazi, lsd, starship)
+# First family is primary, the rest are fallbacks. Bold/italic are auto-derived
+# from Berkeley Mono. Ghostty also bundles its own Nerd Font symbol fallback.
+font-family = Berkeley Mono
+font-family = Symbols Nerd Font Mono
+
+# Keyboard - treat Option as Alt/Meta so Option-modified keys send terminal
+# escape sequences instead of composing characters. This makes Option+Backspace
+# delete a word (Meta-Backspace -> backward-kill-word) in shells and agent TUIs,
+# matching the native-macOS muscle memory (and the Karabiner space-layer chords).
+# Trade-off: Option no longer composes accented characters (é, ü) - unused here.
+macos-option-as-alt = true
+
+# SSH integration - Ghostty's TERM is "xterm-ghostty", which remote hosts don't
+# recognize by default (garbled line editing + "unknown terminal type" errors).
+#   ssh-terminfo: auto-installs Ghostty's terminfo on a remote on first connect
+#                 (infocmp locally + tic remotely; cached, see `ghostty +ssh-cache`)
+#   ssh-env:      propagates terminal env vars over SSH for compatibility
+# cursor/title/path are the on-by-default features, listed so enabling the SSH
+# ones doesn't drop them.
+shell-integration-features = cursor,title,path,ssh-env,ssh-terminfo
+
+# Quick terminal - a dropdown Ghostty window toggled from any app (global
+# bind, needs Ghostty in System Settings > Privacy & Security > Accessibility).
+# Meh+G (Caps held + G); Meh+Cmd+G is the Raycast hotkey for a regular window.
+# Opens on the screen under the mouse pointer: the default (main) resolves to
+# the screen holding the existing Ghostty window, not the focused app.
+# Its shell session persists between show/hide. Position changes need a full
+# Ghostty relaunch; the other quick-terminal-* options apply on reload.
+keybind = global:ctrl+alt+shift+g=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-size = 40%
+quick-terminal-screen = mouse

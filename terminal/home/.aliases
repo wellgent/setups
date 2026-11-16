@@ -1,0 +1,40 @@
+# Editor - use Neovim for vi/vim commands
+alias vi='nvim'
+alias vim='nvim'
+
+# Git - common workflow shortcuts
+alias gs='git status && echo && git log --format="%h %ad %s" --date=short -10'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+
+# Navigation - enhanced directory listing with lsd
+# lsd provides icons, colors, and tree view
+alias ls="lsd"
+alias l="lsd --blocks name,size,date --tree"
+alias lt="lsd --blocks name,size,date --tree -t"  # sorted by time
+alias ll="lsd -al --blocks permission,size,date,name"
+alias la="lsd -A"
+
+# Applications
+alias ff="fastfetch"
+alias lg="lazygit"
+alias cc="claude --dangerously-skip-permissions"
+alias cco="cc --model opus"   # cc on Opus for this session, whatever the default model
+alias ccf="cc --model fable"  # cc on Fable for this session, whatever the default model
+alias cx="codex --dangerously-bypass-approvals-and-sandbox"
+
+# ============================================================
+# FUNCTIONS
+# ============================================================
+
+# y - Launch Yazi file manager with directory sync
+# When exiting Yazi, the shell changes to the last browsed directory
+y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}

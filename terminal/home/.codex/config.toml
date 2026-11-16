@@ -1,0 +1,10 @@
+model = "gpt-6-astra"
+model_reasoning_effort = "high"
+service_tier = "fast"
+personality = "pragmatic"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+
+[tui]
+notification_condition = "always"
+status_line = ["model-with-reasoning", "current-dir", "context-used", "context-window-size", "used-tokens"]

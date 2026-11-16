@@ -1,0 +1,12 @@
+# theme.toml - Theme configuration for Yazi
+# Docs: https://yazi-rs.github.io/docs/configuration/theme/
+# Flavors are pre-made themes managed via `ya pkg` (see package.toml)
+
+[flavor]
+# Catppuccin Mocha: warm dark theme with pastel colors
+# Both slots point at mocha: the terminal theme is pinned dark everywhere,
+# but Ghostty answers yazi's color-scheme query (CSI ?996n) with the macOS
+# appearance - in OS light mode yazi would otherwise resolve the `light`
+# slot, find it empty, and fall back to its unreadable built-in preset.
+dark = "catppuccin-mocha"
+light = "catppuccin-mocha"

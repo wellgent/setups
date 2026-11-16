@@ -1,0 +1,29 @@
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[merge]
+	ff = only
+
+[fetch]
+	prune = true
+
+# delta pages all git output (diff, log -p, show, lazygit) and git add -p.
+# It does not touch nvim's diffview, which renders its own diffs.
+[core]
+	excludesfile = ~/.config/git/ignore
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[include]
+	path = ~/.catppuccin-delta.gitconfig
+
+[delta]
+	# n/N jump between files
+	navigate = true
+	line-numbers = true
+	features = catppuccin-mocha

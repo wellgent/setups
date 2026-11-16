@@ -1,0 +1,52 @@
+# yazi.toml - Main configuration for Yazi file manager
+# Docs: https://yazi-rs.github.io/docs/configuration/yazi/
+# Only non-default settings are listed here; defaults are inherited automatically
+
+[mgr]
+# Display modification time in the file list (alternatives: size, permissions, owner)
+linemode = "mtime"
+
+# Sort files by modification time instead of alphabetically: recent files are
+# the usual targets
+sort_by = "mtime"
+
+# Show newest files/folders first (most recent at top)
+sort_reverse = true
+
+[preview]
+# Rendered-image cap in physical pixels (defaults: 600x900). Retina reports
+# 2x pixel sizes, so defaults fill only a corner of the preview pane - these
+# values cover a full-height pane on the MacBook display.
+# After changing: run `ya cache clear` so previews re-render at the new size.
+max_width = 1600
+max_height = 2400
+
+[opener]
+# Yazi expands %s to the quoted paths of the selected files (shell "$@"
+# positionals are no longer populated)
+edit = [
+  { run = '${EDITOR:-nvim} %s', block = true },
+]
+
+# Markdown previews render through mdcat (via the piper plugin) instead of raw
+# text. --ansi skips terminal detection, so no inline-image escapes reach the
+# preview pane; --local skips remote images. perl strips the OSC 8 hyperlinks,
+# which the preview pane cannot parse (link text vanishes).
+[[plugin.prepend_previewers]]
+url = "*.md"
+run = '''piper -- mdcat --ansi --local --theme catppuccin-mocha --columns "$w" "$1" | perl -pe 's/\e\]8;[^\e]*\e\\//g''''
+
+# Documents convert to Markdown with pandoc and render like the Markdown
+# previews. epub is left out: converting a whole book on every hover is too
+# slow.
+[[plugin.prepend_previewers]]
+url = "*.{docx,pptx,odt,rtf}"
+run = '''piper -- pandoc "$1" -t gfm-raw_html 2>/dev/null | mdcat --ansi --local --theme catppuccin-mocha --columns "$w" | perl -pe 's/\e\]8;[^\e]*\e\\//g''''
+
+# Spreadsheets render through xan (first sheet, first 500 rows): one line per
+# row, as many whole columns as fit, the rest elided. pandoc's xlsx reader
+# fails on openpyxl-written files, xan reads them. CSV keeps the built-in raw
+# text preview, which shows every column.
+[[plugin.prepend_previewers]]
+url = "*.{xlsx,xls,ods}"
+run = 'piper -- xan from "$1" | xan view --color=always --cols "$w" -l 500 -I'

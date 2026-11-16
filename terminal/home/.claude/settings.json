@@ -1,0 +1,19 @@
+{
+  "model": "fable",
+  "effortLevel": "high",
+  "alwaysThinkingEnabled": true,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "idleCompaction": false,
+  "subagentPromptCacheTtl": "1h",
+  "skillListingBudgetFraction": 0.02
+}

@@ -1,0 +1,16 @@
+{
+  "logo": {
+    "type": "small",
+    "padding": { "right": 2 }
+  },
+  "modules": [
+    { "type": "logo" },
+    { "type": "wifi" },
+    { "type": "publicip" },
+    { "type": "uptime" },
+    { "type": "memory" },
+    { "type": "disk" },
+    { "type": "packages" },
+    { "type": "processes" }
+  ]
+}

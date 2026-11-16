@@ -1,0 +1,16 @@
+## History database and key live in ~/.local/share/atuin, never in the repo.
+## Sync (atuin login) is not set up, so history stays per machine.
+
+## ctrl-r: search everything, every host and session
+filter_mode = "global"
+
+## up arrow: classic shell history feel. A new pane starts with the history
+## that existed when it opened, then narrows to its own commands; parallel
+## panes never bleed in.
+filter_mode_shell_up_key_binding = "session-preload"
+
+## enables the WORKSPACE filter (whole git repo) when cycling ctrl-r
+workspaces = true
+
+[theme]
+name = "catppuccin-mocha-mauve"

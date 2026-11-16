@@ -1,0 +1,11 @@
+# bat config - synced via `stow bat`. Each line is a bat command-line argument.
+
+# Catppuccin Mocha is bundled in bat (no theme file to stow) and matches delta's
+# diff theme. bat otherwise defaults to Monokai.
+--theme="Catppuccin Mocha"
+
+# Page through moor (a modern less). --no-linenumbers avoids doubling bat's own
+# line numbers; --quit-if-one-screen mirrors bat's default less -F behaviour.
+# moor is bat's pager only, not the global PAGER: git pages through delta and
+# man keeps less.
+--pager="moor --no-linenumbers --quit-if-one-screen"
