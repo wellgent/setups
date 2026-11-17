@@ -9,12 +9,14 @@ This repo holds those files, one folder per setup.
 ## Setups
 
 - [Terminal setup](terminal/) - An opinionated terminal setup to use across machines, Mac or Linux. Steps on [wellgent.ai/setups/terminal](https://wellgent.ai/setups/terminal).
+- [Coordinate agentic work with wayfinder](wayfinder/) - Take complex work from a loose idea to done, across as many sessions and agents as it takes. Steps on [wellgent.ai/setups/wayfinder](https://wellgent.ai/setups/wayfinder).
 
 ## Layout
 
 A setup's folder sorts its files by where they go.
 
 - `home/` - files that go under your home folder, at the same path. `terminal/home/.zshrc` goes to `~/.zshrc`.
+- `repo/` - files that go into the repo the setup configures, at the same path.
 
 The `README.md` in a setup's folder lists every file with its destination.
 
