@@ -15,6 +15,5 @@
     "sessionUrl": false
   },
   "idleCompaction": false,
-  "subagentPromptCacheTtl": "1h",
   "skillListingBudgetFraction": 0.02
 }
