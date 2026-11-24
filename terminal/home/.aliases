@@ -23,6 +23,7 @@ alias cc="claude --dangerously-skip-permissions"
 alias cco="cc --model opus"   # cc on Opus for this session, whatever the default model
 alias ccf="cc --model fable"  # cc on Fable for this session, whatever the default model
 alias cx="codex --dangerously-bypass-approvals-and-sandbox"
+alias ag="agy --dangerously-skip-permissions"
 
 # ============================================================
 # FUNCTIONS
